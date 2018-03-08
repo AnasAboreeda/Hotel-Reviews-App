@@ -18,18 +18,18 @@ class TopBar extends Component {
             <ControlLabel>Travelled With</ControlLabel>{' '}
             <FormControl componentClass="select" placeholder="Traveled With" onChange={this.handleTravelledWith.bind(this)}>
             <option value="">Any</option>
-            <option value="FAMILY">FAMILY</option>
-            <option value="FRIENDS">FRIENDS</option>
-            <option value="COUPLE">COUPLE</option>
-            <option value="SINGLE">SINGLE</option>
-            <option value="OTHER">OTHER</option>
+            <option value="FAMILY">Family</option>
+            <option value="FRIENDS">Friends</option>
+            <option value="COUPLE">Couple</option>
+            <option value="SINGLE">Single</option>
+            <option value="OTHER">Other</option>
             </FormControl>
           </FormGroup>{' '}
           <FormGroup controlId="sortSelect">
             <ControlLabel>Sort</ControlLabel>{' '}
             <FormControl componentClass="select" placeholder="sort By" onChange={this.handleSort.bind(this)}>
-            <option value="entryDate">entryDate</option>
-            <option value="travelDate">travelDate</option>
+            <option value="entryDate">Review Date</option>
+            <option value="travelDate">Travel Date</option>
             </FormControl>
           </FormGroup>{' '}
         </Form>
