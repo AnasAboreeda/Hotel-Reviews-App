@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Pager } from 'react-bootstrap';
+import PropTypes from 'prop-types';
 
 class Pages extends Component {
   render() {
@@ -18,8 +19,14 @@ class Pages extends Component {
           Next Page &rarr;
         </Pager.Item>
       </Pager>
-    )
+    );
   }
 }
+
+Pages.propTypes = {
+  currentPage: PropTypes.number.isRequired,
+  lastPage: PropTypes.number.isRequired,
+  getPage: PropTypes.func.isRequired,
+};
 
 export default Pages;

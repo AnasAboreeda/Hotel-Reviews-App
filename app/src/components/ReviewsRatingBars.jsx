@@ -8,13 +8,12 @@ class ReviewsRatingBars extends Component {
     const aspects = rates.aspects;
 
     return (
-      <div className='ratings-container'>
-        <RateBar title='General Rate' rate={generalRate} />
+      <div className="ratings-container">
+        <RateBar title="General Rate" rate={generalRate} />
         {Object.keys(aspects).map(key =>
-          aspects[key] > 0 ? <RateBar key={key} title={key} rate={aspects[key]} /> : null
-        )}
+          (aspects[key] > 0 ? <RateBar key={key} title={key} rate={aspects[key]} /> : null),)}
       </div>
-    )
+    );
   }
 }
 

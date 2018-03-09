@@ -5,12 +5,12 @@ import Reviews from './Reviews';
 
 class App extends Component {
   render() {
-    return(
+    return (
       <div>
         <Header />
         <Reviews />
       </div>
-    )
+    );
   }
 }
 

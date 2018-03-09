@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {PageHeader} from 'react-bootstrap';
+import { PageHeader } from 'react-bootstrap';
 import './../styles/App.css';
 
 class Header extends Component {
@@ -8,7 +8,7 @@ class Header extends Component {
       <PageHeader>
         Zoover Reviews App
       </PageHeader>
-    )
+    );
   }
 }
 
