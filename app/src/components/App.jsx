@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
 
 import Header from './Header';
 import Reviews from './Reviews';
@@ -15,8 +14,4 @@ class App extends Component {
   }
 }
 
-function mapStateToProps(state) {
-  return { hotelName: state.hotelName }
-}
-
-export default connect(mapStateToProps, null)(App);
+export default App;
