@@ -16,6 +16,7 @@ app.use(bodyParser.json());
 app.use((err, req, res, next) => {
   console.error(err.stack);
   res.status(500).send('Something broke!');
+  next();
 });
 
 app.use(morgan('dev'));
@@ -27,7 +28,7 @@ app.use(cors());
  * Method : GET
  * URL Params :  Optional: page:[number], traveledWith:[string], sort: [string]
  * Response Codes: Success (200 OK), Server Error (500)
- **/
+ * */
 app.get('/api/reviews', (req, res) => {
   const params = req.query;
   const sort = params && params.sort ? params.sort : undefined;
@@ -37,7 +38,9 @@ app.get('/api/reviews', (req, res) => {
   const { pageReviews, lastPage, currentPage } = reviews.getPage(page);
 
   res.setHeader('Cache-Control', 'no-cache');
-  res.json({ currentPage, lastPage, reviews: pageReviews, sort, traveledWith });
+  res.json({
+    currentPage, lastPage, reviews: pageReviews, sort, traveledWith,
+  });
 });
 
 /**
@@ -46,12 +49,12 @@ app.get('/api/reviews', (req, res) => {
  * Method : GET
  * URL Params :  Optional: traveledWith:[string]
  * Response Codes: Success (200 OK), Server Error (500)
- **/
+ * */
 app.get('/api/averages', (req, res) => {
   const params = req.query;
   const travelledWith = params && params.traveledWith ? params.traveledWith : undefined;
 
-  const reviews = new Reviews().reviews;
+  const { reviews } = new Reviews();
   const average = new Averages(reviews, travelledWith).averages;
   res.setHeader('Cache-Control', 'no-cache');
   res.json(average);

@@ -16,9 +16,9 @@ export default class Reviews {
    * @param {String} travelledWithFilter
    * @memberof Reviews
    */
-  constructor(sortBy , travelledWithFilter) {
+  constructor(sortBy, travelledWithFilter) {
     let reviews;
-    let sortedBy = sortBy ? sortBy : 'entryDate';
+    const sortedBy = sortBy || 'entryDate';
 
     reviews = fs.readFileSync(REVIEWS_FILE);
     reviews = JSON.parse(reviews);
@@ -28,7 +28,7 @@ export default class Reviews {
     }
 
     if (travelledWithFilter) {
-      reviews = reviews.filter(({traveledWith}) => traveledWith === travelledWithFilter);
+      reviews = reviews.filter(({ traveledWith }) => traveledWith === travelledWithFilter);
     }
 
     this.reviews = reviews;
@@ -46,7 +46,7 @@ export default class Reviews {
     const lastPage = Math.ceil(this.reviews.length / pageSize);
     const currentPage = pageNo > lastPage ? lastPage : pageNo;
     const pageFirstReviewIndex = (currentPage - 1) * 10;
-    const pageReviews = this.reviews.slice(pageFirstReviewIndex,  pageFirstReviewIndex + pageSize);
+    const pageReviews = this.reviews.slice(pageFirstReviewIndex, pageFirstReviewIndex + pageSize);
 
     return { pageReviews, lastPage, currentPage };
   }

@@ -8,7 +8,6 @@ import moment from 'moment';
  * @class AverageCalculator
  */
 export default class AverageCalculator {
-
   /**
    * Returns the average weighted
    *
@@ -18,9 +17,9 @@ export default class AverageCalculator {
    * @returns
    * @memberof AverageCalculator
    */
-  static weightReview (reviewDate, score) {
-    if (score == null || score < 0) {throw new Error('Invalid Score!!');}
-    if(!reviewDate || !moment(reviewDate).isValid()) {throw new Error('You need to provide a valid review date');}
+  static weightReview(reviewDate, score) {
+    if (score == null || score < 0) { throw new Error('Invalid Score!!'); }
+    if (!reviewDate || !moment(reviewDate).isValid()) { throw new Error('You need to provide a valid review date'); }
 
     let weightedScore = 0;
     const reviewYear = moment(reviewDate).year();
@@ -46,7 +45,7 @@ export default class AverageCalculator {
    * @memberof AverageCalculator
    */
   static calculateAverage(arr, aspect) {
-    if(!arr || arr.length === 0) {throw new Error('Can no calculated the average of nothing! please provide an array as an input');}
+    if (!arr || arr.length === 0) { throw new Error('Can no calculated the average of nothing! please provide an array as an input'); }
     const sum = arr.reduce((a, b) => {
       const score = b[aspect];
       const reviewDate = b.entryDate;

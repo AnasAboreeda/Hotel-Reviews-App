@@ -2,7 +2,7 @@
   - I assumed that we can deal with all the reviews in the memory.
 */
 
-import AveragesCalculator from './AverageCalculator.js';
+import AveragesCalculator from './AverageCalculator';
 
 /**
  * Averages Class
@@ -20,7 +20,7 @@ export default class Averages {
   constructor(reviews, traveledWith) {
     this.reviews = reviews;
 
-    if(traveledWith) {
+    if (traveledWith) {
       this.reviews = this.reviews.filter(x => x.traveledWith === traveledWith);
     }
 
@@ -37,13 +37,11 @@ export default class Averages {
    */
   static calculateAvgGeneralRating(arr) {
     const generalRatingArr = arr
-      .filter(({ratings}) => ratings.general.general > 0)
-      .map(({entryDate, ratings}) => {
-        return {
-          entryDate: entryDate,
-          rate: ratings.general.general
-        };
-      });
+      .filter(({ ratings }) => ratings.general.general > 0)
+      .map(({ entryDate, ratings }) => ({
+        entryDate,
+        rate: ratings.general.general,
+      }));
     return AveragesCalculator.calculateAverage(generalRatingArr, 'rate');
   }
 
@@ -58,13 +56,11 @@ export default class Averages {
    */
   static calculateAspectAverage(arr, aspect) {
     const aspectArr = arr
-      .filter(({ratings}) => ratings.aspects[aspect] > 0)
-      .map(({entryDate, ratings}) => {
-        return {
-          entryDate: entryDate,
-          rate: ratings.aspects[aspect]
-        };
-      });
+      .filter(({ ratings }) => ratings.aspects[aspect] > 0)
+      .map(({ entryDate, ratings }) => ({
+        entryDate,
+        rate: ratings.aspects[aspect],
+      }));
 
     if (aspectArr.length === 0) {
       return 0;
@@ -80,8 +76,8 @@ export default class Averages {
    * @memberof Averages
    */
   getAverages() {
-    let averages = {};
-    let reviewsArr = this.reviews;
+    const averages = {};
+    const reviewsArr = this.reviews;
 
     averages.general = Averages.calculateAvgGeneralRating(reviewsArr);
 
