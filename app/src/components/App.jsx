@@ -7,7 +7,7 @@ class App extends Component {
   render() {
     return(
       <div>
-        <Header hotelName={this.props.hotelName} />
+        <Header />
         <Reviews />
       </div>
     )
