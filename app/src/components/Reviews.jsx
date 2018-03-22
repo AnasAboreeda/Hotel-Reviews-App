@@ -11,6 +11,13 @@ import Review from './Review';
 import './../styles/App.css';
 
 class Reviews extends Component {
+  constructor() {
+    super();
+    this.getSorted = this.getSorted.bind(this);
+    this.getTravelledWith = this.getTravelledWith.bind(this);
+    this.getPage = this.getPage.bind(this);
+  }
+
   componentDidMount() {
     const reviewOptions = {
       sort: this.props.sort,
@@ -56,7 +63,7 @@ class Reviews extends Component {
             Hotel ABCDEF Reviews
           </h2>
         </div>
-        <TopBar traveledWith={this.getTravelledWith.bind(this)} sortBy={this.getSorted.bind(this)} />
+        <TopBar traveledWith={this.getTravelledWith} sortBy={this.getSorted} />
         <div className="section-title">
           <h3>
             Averages
@@ -75,7 +82,7 @@ class Reviews extends Component {
           </div>
           ))}
 
-        <Pages currentPage={this.props.currentPage} lastPage={this.props.lastPage} getPage={this.getPage.bind(this)} />
+        <Pages currentPage={this.props.currentPage} lastPage={this.props.lastPage} getPage={this.getPage} />
       </div>
     );
   }
