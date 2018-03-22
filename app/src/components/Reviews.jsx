@@ -82,7 +82,11 @@ class Reviews extends Component {
           </div>
           ))}
 
-        <Pages currentPage={this.props.currentPage} lastPage={this.props.lastPage} getPage={this.getPage} />
+        <Pages
+          currentPage={this.props.currentPage}
+          lastPage={this.props.lastPage}
+          getPage={this.getPage}
+        />
       </div>
     );
   }
