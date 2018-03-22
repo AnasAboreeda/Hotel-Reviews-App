@@ -1,12 +1,14 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Label } from 'react-bootstrap';
+import PropTypes from 'prop-types';
 
-class ItemLabel extends Component {
-  render() {
-    return (
-      <Label className="review-item-label" bsStyle="info">{this.props.text}</Label>
-    );
-  }
-}
+const ItemLabel = ({ text }) => (
+  <Label className="review-item-label" bsStyle="info">{text}</Label>
+);
+
+ItemLabel.propTypes = {
+  text: PropTypes.string.isRequired,
+};
+
 
 export default ItemLabel;

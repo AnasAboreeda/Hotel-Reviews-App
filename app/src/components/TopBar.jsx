@@ -3,6 +3,12 @@ import { Form, FormGroup, ControlLabel, FormControl } from 'react-bootstrap';
 import PropTypes from 'prop-types';
 
 class TopBar extends Component {
+  constructor() {
+    super();
+    this.handleTravelledWith = this.handleTravelledWith.bind(this);
+    this.handleSort = this.handleSort.bind(this);
+  }
+
   handleTravelledWith(e) {
     this.props.traveledWith(e.target.value);
   }
@@ -17,7 +23,11 @@ class TopBar extends Component {
         <Form inline>
           <FormGroup controlId="traveledWithSelect">
             <ControlLabel>Travelled With</ControlLabel>{' '}
-            <FormControl componentClass="select" placeholder="Traveled With" onChange={this.handleTravelledWith.bind(this)}>
+            <FormControl
+              componentClass="select"
+              placeholder="Traveled With"
+              onChange={this.handleTravelledWith}
+            >
               <option value="">Any</option>
               <option value="FAMILY">Family</option>
               <option value="FRIENDS">Friends</option>
@@ -28,7 +38,11 @@ class TopBar extends Component {
           </FormGroup>{' '}
           <FormGroup controlId="sortSelect">
             <ControlLabel>Sort</ControlLabel>{' '}
-            <FormControl componentClass="select" placeholder="sort By" onChange={this.handleSort.bind(this)}>
+            <FormControl
+              componentClass="select"
+              placeholder="sort By"
+              onChange={this.handleSort}
+            >
               <option value="entryDate">Review Date</option>
               <option value="travelDate">Travel Date</option>
             </FormControl>

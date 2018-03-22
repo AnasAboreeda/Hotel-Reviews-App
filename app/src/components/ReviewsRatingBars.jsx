@@ -1,20 +1,22 @@
-import React, { Component } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import RateBar from './RateBar';
 
-class ReviewsRatingBars extends Component {
-  render() {
-    const rates = this.props.rates;
-    const generalRate = rates.general.general;
-    const aspects = rates.aspects;
+const ReviewsRatingBars = ({ rates }) => {
+  const generalRate = rates.general.general;
+  const { aspects } = rates;
 
-    return (
-      <div className="ratings-container">
-        <RateBar title="General Rate" rate={generalRate} />
-        {Object.keys(aspects).map(key =>
-          (aspects[key] > 0 ? <RateBar key={key} title={key} rate={aspects[key]} /> : null),)}
-      </div>
-    );
-  }
-}
+  return (
+    <div className="ratings-container">
+      <RateBar title="General Rate" rate={generalRate} />
+      {Object.keys(aspects).map(key =>
+          (aspects[key] > 0 ? <RateBar key={key} title={key} rate={aspects[key]} /> : null))}
+    </div>
+  );
+};
+
+ReviewsRatingBars.propTypes = {
+  rates: PropTypes.object.isRequired, // eslint-disable-line react/forbid-prop-types
+};
 
 export default ReviewsRatingBars;

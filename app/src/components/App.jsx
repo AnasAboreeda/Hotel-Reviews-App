@@ -1,17 +1,12 @@
-import React, { Component } from 'react';
+import React from 'react';
 
 import Header from './Header';
 import Reviews from './Reviews';
 
-class App extends Component {
-  render() {
-    return (
-      <div>
-        <Header />
-        <Reviews />
-      </div>
-    );
-  }
-}
+const App = () => (
+  <div>
+    <Header />
+    <Reviews />
+  </div>);
 
 export default App;

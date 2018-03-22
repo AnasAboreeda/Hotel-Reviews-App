@@ -1,15 +1,12 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { PageHeader } from 'react-bootstrap';
 import './../styles/App.css';
 
-class Header extends Component {
-  render() {
-    return (
-      <PageHeader>
+const Header = () => (
+  <PageHeader>
         Zoover Reviews App
-      </PageHeader>
-    );
-  }
-}
+  </PageHeader>
+);
+
 
 export default Header;

@@ -1,27 +1,33 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Pager } from 'react-bootstrap';
 import PropTypes from 'prop-types';
 
-class Pages extends Component {
-  render() {
-    const previousActive = this.props.currentPage > 1;
-    const nextActive = this.props.currentPage < this.props.lastPage;
+const Pages = ({ currentPage, lastPage, getPage }) => {
+  const previousActive = currentPage > 1;
+  const nextActive = currentPage < lastPage;
 
-    return (
-      <Pager>
-        <Pager.Item previous disabled={!previousActive} onClick={() => this.props.getPage(this.props.currentPage - 1)}>
+  return (
+    <Pager>
+      <Pager.Item
+        previous
+        disabled={!previousActive}
+        onClick={() => getPage(currentPage - 1)}
+      >
           &larr; Previous Page
-        </Pager.Item>
+      </Pager.Item>
 
-        {this.props.currentPage} / {this.props.lastPage}
+      {currentPage} / {lastPage}
 
-        <Pager.Item next disabled={!nextActive} onClick={() => this.props.getPage(this.props.currentPage + 1)}>
+      <Pager.Item
+        next
+        disabled={!nextActive}
+        onClick={() => getPage(currentPage + 1)}
+      >
           Next Page &rarr;
-        </Pager.Item>
-      </Pager>
-    );
-  }
-}
+      </Pager.Item>
+    </Pager>
+  );
+};
 
 Pages.propTypes = {
   currentPage: PropTypes.number.isRequired,
