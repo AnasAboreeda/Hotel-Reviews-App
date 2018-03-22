@@ -69,8 +69,8 @@ class Reviews extends Component {
           </h3>
         </div>
         {this.props.reviews && this.props.reviews.map(review => (
-          <div className="review-container">
-            <Review key={review.id} review={review} />
+          <div key={review.id} className="review-container">
+            <Review review={review} />
             <ReviewsRatingBars rates={review.ratings} />
           </div>
           ))}
